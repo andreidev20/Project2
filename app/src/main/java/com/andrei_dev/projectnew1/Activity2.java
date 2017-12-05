@@ -7,13 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 public class Activity2 extends AppCompatActivity implements View.OnClickListener {
 
     Button btnAdd, btnRead, btnClear;
-    EditText dis,pair,day;
+    EditText dis,pair;
+    Spinner day;
+    String itemday;
 
     DBHelper dbHelper;
 
@@ -33,9 +39,16 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
 
         dis = (EditText) findViewById(R.id.tx_dis);
         pair = (EditText) findViewById(R.id.tx_pair);
-        day = (EditText) findViewById(R.id.tx_day);
+        day = (Spinner) findViewById(R.id.sp_day);
 
         dbHelper = new DBHelper(this);
+
+
+
+        String[] list_day = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list_day);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        day.setAdapter(adapter);
     }
 
     @Override
@@ -43,7 +56,7 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
 
         String Dis = dis.getText().toString();
         String Pair = pair.getText().toString();
-        String Day = day.getText().toString();
+        //String Day = day.getText().toString();
 
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
@@ -53,10 +66,26 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()) {
 
             case R.id.btnAdd:
+
+
+                day.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view,
+                                               int position, long id) {
+                        // показываем позиция нажатого элемента
+                        itemday = (String) parent.getItemAtPosition(position);
+                        Toast.makeText(getBaseContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                    }
+                });
+
+                String selected = day.getSelectedItem().toString();
                 contentValues.put(DBHelper.KEY_DIS, Dis);
                 contentValues.put(DBHelper.KEY_PAIR, Pair);
-                contentValues.put(DBHelper.KEY_DAY, Day);
-
+                contentValues.put(DBHelper.KEY_DAY, selected);
                 database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
                 break;
 

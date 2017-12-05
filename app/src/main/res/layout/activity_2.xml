@@ -1,32 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.andrei_dev.projectnew1.Activity2">
-
-
-
-<LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-android:orientation="vertical">
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:ignore="ExtraText">
 
     <EditText
         android:id="@+id/tx_dis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Дисциплина"></EditText>
-
-    <EditText
-        android:id="@+id/tx_day"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="День недели"
-        android:inputType="textPersonName" />
+        android:hint="Дисциплина" />
 
     <EditText
         android:id="@+id/tx_pair"
@@ -36,27 +21,36 @@ android:orientation="vertical">
         android:hint="Пара"
         android:inputType="number" />
 
+
+    <Spinner
+        android:id="@+id/sp_day"
+        android:layout_width="match_parent"
+        android:layout_height="37dp" />
+
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Добавить"></Button>
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить"
+            tools:ignore="ButtonStyle" />
 
-    <Button
-        android:id="@+id/btnRead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Прочитать"></Button>
+        <Button
+            android:id="@+id/btnRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Прочитать"
+            tools:ignore="ButtonStyle" />
 
-    <Button
-        android:id="@+id/btnClear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Удалить"></Button>
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Удалить" />
+    </LinearLayout>
+
 </LinearLayout>
-</LinearLayout>
-</android.support.constraint.ConstraintLayout>
+
