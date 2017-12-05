@@ -2,12 +2,11 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:ignore="ExtraText"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/background"
-    >
+    android:orientation="vertical"
+    tools:ignore="ExtraText">
 
     <EditText
         android:id="@+id/tx_dis"
@@ -55,8 +54,16 @@
             android:id="@+id/btnClear"
             android:layout_width="127dp"
             android:layout_height="wrap_content"
-            android:text="Удалить" />
+            android:text="Очистить" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="147dp"
+        android:text="TextView"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp" />
 
 </LinearLayout>
 

@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Activity2 extends AppCompatActivity implements View.OnClickListener {
@@ -20,7 +21,7 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
     EditText dis,pair;
     Spinner day;
     String select_item;
-
+    TextView textView;
     DBHelper dbHelper;
 
     @Override
@@ -40,6 +41,7 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
         dis = (EditText) findViewById(R.id.tx_dis);
         pair = (EditText) findViewById(R.id.tx_pair);
         day = (Spinner) findViewById(R.id.sp_day);
+        textView =(TextView) findViewById(R.id.textView) ;
 
         dbHelper = new DBHelper(this);
 
@@ -82,6 +84,7 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
                     int pairIndex = cursor.getColumnIndex(DBHelper.KEY_PAIR);
                     int dayIndex = cursor.getColumnIndex(DBHelper.KEY_DAY);
                     do {
+
                         Log.d("mLog", "ID = " + cursor.getInt(idIndex) +
                                 ", dis = " + cursor.getString(disIndex) +
                                 ", pair = " + cursor.getString(pairIndex) +
@@ -95,9 +98,12 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
 
             case R.id.btnClear:
                 database.delete(DBHelper.TABLE_CONTACTS, null, null);
+
                 break;
         }
         dbHelper.close();
     }
+
+
 }
 
