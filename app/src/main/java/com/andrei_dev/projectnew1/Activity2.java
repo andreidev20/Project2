@@ -19,7 +19,7 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
     Button btnAdd, btnRead, btnClear;
     EditText dis,pair;
     Spinner day;
-    String itemday;
+    String select_item;
 
     DBHelper dbHelper;
 
@@ -56,7 +56,7 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
 
         String Dis = dis.getText().toString();
         String Pair = pair.getText().toString();
-        //String Day = day.getText().toString();
+
 
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
@@ -66,26 +66,10 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()) {
 
             case R.id.btnAdd:
-
-
-                day.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view,
-                                               int position, long id) {
-                        // показываем позиция нажатого элемента
-                        itemday = (String) parent.getItemAtPosition(position);
-                        Toast.makeText(getBaseContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> arg0) {
-                    }
-                });
-
-                String selected = day.getSelectedItem().toString();
+                select_item = day.getSelectedItem().toString();
                 contentValues.put(DBHelper.KEY_DIS, Dis);
                 contentValues.put(DBHelper.KEY_PAIR, Pair);
-                contentValues.put(DBHelper.KEY_DAY, selected);
+                contentValues.put(DBHelper.KEY_DAY, select_item);
                 database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
                 break;
 
