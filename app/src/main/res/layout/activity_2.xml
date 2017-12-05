@@ -5,13 +5,18 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:ignore="ExtraText">
+    tools:ignore="ExtraText"
+    android:background="@drawable/background"
+    >
 
     <EditText
         android:id="@+id/tx_dis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Дисциплина" />
+        android:hint="Дисциплина"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textColor="@color/colorPrimaryDark" />
 
     <EditText
         android:id="@+id/tx_pair"
@@ -19,7 +24,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Пара"
-        android:inputType="number" />
+        android:inputType="number"
+        android:singleLine="true" />
 
 
     <Spinner
@@ -33,21 +39,21 @@
 
         <Button
             android:id="@+id/btnAdd"
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:text="Добавить"
             tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/btnRead"
-            android:layout_width="wrap_content"
+            android:layout_width="127dp"
             android:layout_height="wrap_content"
             android:text="Прочитать"
             tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/btnClear"
-            android:layout_width="wrap_content"
+            android:layout_width="127dp"
             android:layout_height="wrap_content"
             android:text="Удалить" />
     </LinearLayout>
